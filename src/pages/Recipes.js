@@ -11,9 +11,10 @@ const Recipes = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${backendUrl}/api/recipes`);
+        const response = await axios.get(`${backendUrl}/recipes`);
         setRecipes(response.data);
         setFilteredRecipes(response.data); // Initialize filteredRecipes with all recipes
+        console.log("Fetched recipes:", response.data); // debugging: log fetched recipes
       } catch (error) {
         console.error('Error fetching data:', error);
         console.error('Error details:', error.response ? error.response.data : error.message); // Detailed error logging
@@ -35,7 +36,7 @@ const Recipes = () => {
       )
     );
     setFilteredRecipes(filtered);
-    console.log("filtered recipes:");
+    console.log("filtered recipes:", filtered); // debugging: log filtered recipes
   };
 
   return (
